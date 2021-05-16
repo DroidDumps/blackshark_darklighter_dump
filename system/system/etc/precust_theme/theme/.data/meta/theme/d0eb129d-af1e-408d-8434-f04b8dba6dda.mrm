@@ -1,0 +1,103 @@
+{
+  "localId": "d0eb129d-af1e-408d-8434-f04b8dba6dda",
+  "onlineId": null,
+  "assemblyId": null,
+  "productId": null,
+  "hash": "e67ce7ca903af5e3ad1a86c073936af6e79b0efd",
+  "platform": 8,
+  "size": 7783289,
+  "updatedTime": 0,
+  "version": "1.0",
+  "authors": {
+    "fallback": "BLACKSHARK"
+  },
+  "designers": {
+    "fallback": "BLACKSHARK"
+  },
+  "titles": {
+    "zh_TW": "等风来",
+    "zh_CN": "等风来",
+    "fallback": "Windy"
+  },
+  "descriptions": {},
+  "builtInThumbnails": {
+    "en_US": [
+      "en_US_lockscreen_0.jpg",
+      "en_US_launcher_0.jpg",
+      "en_US_launcher_1.jpg",
+      "en_US_statusbar_0.jpg",
+      "en_US_statusbar_1.jpg",
+      "en_US_contact_0.jpg",
+      "en_US_mms_0.jpg",
+      "en_US_mms_1.jpg"
+    ],
+    "fallback": [
+      "preview_lockscreen_0.jpg",
+      "preview_launcher_0.jpg",
+      "preview_icons_small_0.jpg",
+      "preview_icons_0.jpg"
+    ]
+  },
+  "builtInPreviews": {
+    "en_US": [
+      "en_US_lockscreen_0.jpg",
+      "en_US_launcher_0.jpg",
+      "en_US_launcher_1.jpg",
+      "en_US_statusbar_0.jpg",
+      "en_US_statusbar_1.jpg",
+      "en_US_contact_0.jpg",
+      "en_US_mms_0.jpg",
+      "en_US_mms_1.jpg"
+    ],
+    "fallback": [
+      "preview_lockscreen_0.jpg",
+      "preview_launcher_0.jpg",
+      "preview_icons_0.jpg"
+    ]
+  },
+  "thumbnails": [],
+  "previews": [],
+  "parentResources": [],
+  "subResources": [
+    {
+      "localId": "b4208dba-acb3-4d31-9d8d-ce9056dc6a25",
+      "resourceCode": "wallpaper",
+      "extraMeta": {},
+      "metaPath": null,
+      "contentPath": null
+    },
+    {
+      "localId": "17d74c50-20b4-4180-a3df-3f663fdd7018",
+      "resourceCode": "icons",
+      "extraMeta": {},
+      "metaPath": null,
+      "contentPath": null
+    },
+    {
+      "localId": "deaa0600-682f-4193-b894-c28fc5bfbed4",
+      "resourceCode": "lockscreen",
+      "extraMeta": {},
+      "metaPath": null,
+      "contentPath": null
+    },
+    {
+      "localId": "6a90a979-ef57-4086-a234-f87393a1d278",
+      "resourceCode": "module_config.xml",
+      "extraMeta": {},
+      "metaPath": null,
+      "contentPath": null
+    },
+    {
+      "localId": "fb6e604e-2675-4339-acec-332e5228e8a1",
+      "resourceCode": "plugin_config.xml",
+      "extraMeta": {},
+      "metaPath": null,
+      "contentPath": null
+    }
+  ],
+  "extraMeta": {},
+  "metaPath": null,
+  "contentPath": null,
+  "rightsPath": null,
+  "screenRatio": null
+}

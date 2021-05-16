@@ -1,0 +1,48 @@
+{
+  "localId": "deaa0600-682f-4193-b894-c28fc5bfbed4",
+  "onlineId": null,
+  "assemblyId": null,
+  "productId": null,
+  "hash": "03705f0c313a318e58418469077820ce3f69897a",
+  "platform": 8,
+  "size": 2353969,
+  "updatedTime": 0,
+  "version": "1.0",
+  "authors": {
+    "fallback": "BLACKSHARK"
+  },
+  "designers": {
+    "fallback": "BLACKSHARK"
+  },
+  "titles": {
+    "fallback": "等风来"
+  },
+  "descriptions": {},
+  "builtInThumbnails": {
+    "fallback": [
+      "preview_lockscreen_0.jpg"
+    ]
+  },
+  "builtInPreviews": {
+    "fallback": [
+      "preview_lockscreen_0.jpg"
+    ]
+  },
+  "thumbnails": [],
+  "previews": [],
+  "parentResources": [
+    {
+      "localId": "d0eb129d-af1e-408d-8434-f04b8dba6dda",
+      "resourceCode": "theme",
+      "extraMeta": {},
+      "metaPath": null,
+      "contentPath": null
+    }
+  ],
+  "subResources": [],
+  "extraMeta": {},
+  "metaPath": null,
+  "contentPath": null,
+  "rightsPath": null,
+  "screenRatio": null
+}
