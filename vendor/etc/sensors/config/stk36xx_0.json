@@ -1,0 +1,64 @@
+{
+  "config":
+  {
+    "hw_platform": ["MTP", "Dragon", "Surf", "QRD", "HDK", "INVALID", "IDP"],
+    "soc_id": ["291", "246", "305", "321", "336", "339", "341", "355", "360", "365", "366"]
+  },
+  "stk36xx_0":{
+    "owner": "sns_stk36xx",
+    ".ambient_light":{
+      "owner": "sns_stk36xx",
+      ".config":{
+        "owner": "sns_stk36xx",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    },
+	".proximity":{
+      "owner": "sns_stk36xx",
+      ".config":{
+        "owner": "sns_stk36xx",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "1"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    },
+	".rgb":{
+      "owner": "sns_stk36xx",
+      ".config":{
+        "owner": "sns_stk36xx",
+        "is_dri":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "hw_id":{ "type": "int", "ver": "0",
+          "data": "0"
+        },
+        "res_idx":{ "type": "int", "ver": "0",
+          "data": "1"
+        },
+        "sync_stream":{ "type": "int", "ver": "0",
+          "data": "0"
+        }
+      }
+    }    
+  }
+}

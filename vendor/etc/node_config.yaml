@@ -1,0 +1,300 @@
+# YAML语法简要：
+#   1.严格遵守缩进格式
+#     1).不能用TAB制表符，只能是空格
+#     2).缩进空格数无严格要求，左对齐即为同级数据
+#   2.大小写敏感
+#   3.{key: value}格式要注意，:后有一个空格
+#   4.数字前不要有0x或者0，否则会自动转换成10进制数，若要标识非10进制数，以String传入
+
+# 设备节点的配置文件，节点onwer自check
+
+configName: node_config
+versionCode: 1
+items:
+  ####################多媒体相关节点#####################
+  # TP容值检测Rawdata数据
+  - nodeName: tp_rawdata
+    nodePath: /sys/touchscreen/rawdata
+    defValue: ~
+    #该节点执行后，返回以下值之一，判定为通过
+    passValue: [pass]
+
+  # TP芯片信息
+  - nodeName: tp_chip_info
+    nodePath: /sys/touchscreen/name
+    defValue: ~
+    passValue: ~
+
+  # LCD型号信息
+  - nodeName: lcd_version
+    nodePath: /sys/devices/virtual/misc/iris2p/iris2p_lcdid
+    defValue: ~
+    passValue: ~
+
+  # UFS Vendor信息
+  - nodeName: ufs_vendor
+    nodePath: /sys/block/sda/device/vendor
+    defValue: ~
+    passValue: ~
+
+  # 屏幕校准检测
+  - nodeName: lcd_checksum
+    nodePath: /sys/touchscreen/novatek_shark_color
+    defValue: ~
+    passValue: ~
+
+  # 屏幕校准状态
+  - nodeName: lcd_checksum_state
+    nodePath: /sys/devices/virtual/misc/iris2p/iris2p_firmware
+    defValue: ~
+    passValue: ~
+
+  # 灯效芯片信息
+  - nodeName: lamp_effect_chip_info
+    nodePath: /sys/rgb/name
+    defValue: ~
+    #以下值分别对应下方灯效控制1，2，3...，顺序不可乱
+    passValue: [aw9120_led,aw2015_led,aw22xxx_led]
+
+  # 灯效控制1
+  - nodeName: lamp_effect_ctrl_1
+    nodePath: /sys/bus/i2c/devices/1-002c/mcu_control
+    #默认值
+    defValue: 0
+    #亮度控制值（当前方案最大亮度档位）
+    passValue: [4]
+
+  # 灯效控制2 blue
+  - nodeName: lamp_effect_ctrl_2_blue
+    nodePath: /sys/rgb/leds/blue_1/brightness
+    #默认值
+    defValue: 0
+    #亮度控制值
+    passValue: &lamp2_brightness [255]
+
+  # 灯效控制2 red
+  - nodeName: lamp_effect_ctrl_2_red
+    nodePath: /sys/rgb/leds/red_1/brightness
+    #默认值
+    defValue: 0
+    #亮度控制值
+    passValue: *lamp2_brightness
+
+  # 灯效控制2 green
+  - nodeName: lamp_effect_ctrl_2_green
+    nodePath: /sys/rgb/leds/green_1/brightness
+    #默认值
+    defValue: 0
+    #亮度控制值
+    passValue: *lamp2_brightness
+
+  # 灯效控制3,简单控制节点
+  - nodeName: lamp_effect_ctrl_3
+    nodePath: /sys/rgb/mmi
+    #默认值
+    defValue: 0
+    #亮度控制值
+    passValue: [1]
+
+  # 音乐灯效控制节点
+  - nodeName: lamp_effect_ctrl_music
+    nodePath: /sys/rgb/audioin
+    #默认值
+    defValue: 0
+    #亮度控制值
+    passValue: [1]
+
+  # LED指示灯测试属性（红）
+  - nodeName: led_red
+    nodePath: sys.sysctl.led.red
+    defValue: 0
+    #指示灯亮度值，支持且只支持一个亮度值
+    passValue: &led_brightness [150]
+
+  # LED指示灯测试属性（绿）
+  - nodeName: led_green
+    nodePath: sys.sysctl.led.green
+    defValue: 0
+    #指示灯亮度值，支持且只支持一个亮度值
+    passValue: *led_brightness
+
+  # LED指示灯测试属性（蓝）
+  - nodeName: led_blue
+    nodePath: sys.sysctl.led.blue
+    defValue: 0
+    #指示灯亮度值，支持且只支持一个亮度值
+    passValue: *led_brightness
+
+  ########################音频相关节点###############################
+  # 耳机插入状态检测
+  - nodeName: headset_plugin_state
+    nodePath: /sys/module/max20328/parameters/headset_state
+    #耳机未插入时节点值
+    defValue: 0
+    #耳机插入后节点值
+    passValue: [1]
+
+  # 耳机正反插状态
+  - nodeName: headset_polarity_state
+    nodePath: /sys/module/max20328/parameters/mic_gnd
+    #开机后无耳机插入动作的默认值（或者上一个插入状态的残留值）
+    defValue: 0
+    #耳机正面插入时节点值（该节点值不会动态刷新，只会在下次有耳机插入时刷新上一个状态）
+    passValue: [0]
+
+  ####################电源相关节点###########################
+  # 充电器连接状态
+  - nodeName: charger_plugin_state
+    nodePath: /sys/class/power_supply/usb/online
+    #充电器未插入时节点值
+    defValue: 0
+    #充电器已插入时节点值
+    passValue: [1]
+
+  # 充电设备类型
+  - nodeName: charger_device_type
+    nodePath: /sys/class/power_supply/usb/real_type
+    defValue: Unknown
+    passValue: [USB_HVDCP_3]
+
+  # 整机供电状态
+  - nodeName: device_charging_state
+    nodePath: sys/class/power_supply/battery/input_suspend
+    #整机供电打开时节点值
+    defValue: 0
+    #整机供电关闭时节点值
+    passValue: [1]
+
+  # 电池充电状态
+  - nodeName: battery_charging_state
+    nodePath: /sys/class/power_supply/battery/status
+    #未供电时节点值
+    defValue: Discharing
+    #满足以下值之一，即判定处于供电状态
+    passValue: [Charging, Full]
+
+  # 电池充电电压
+  - nodeName: battery_charging_voltage
+    nodePath: /sys/class/power_supply/battery/voltage_now
+    defValue: ~
+    passValue: ~
+
+  # 电池温度
+  - nodeName: battery_temperature
+    nodePath: /sys/class/power_supply/battery/temp
+    defValue: ~
+    passValue: ~
+
+  # 电池电量
+  - nodeName: battery_capacity
+    nodePath: /sys/class/power_supply/battery/capacity
+    defValue: ~
+    passValue: ~
+
+  # 电池电流
+  - nodeName: battery_electricity
+    nodePath: /sys/class/power_supply/battery/current_now
+    defValue: ~
+    passValue: ~
+
+  # battery型号信息
+  - nodeName: battery_version
+    nodePath: /sys/class/power_supply/bms/battery_type
+    defValue: ~
+    passValue: ~
+
+  # CPU温度
+  - nodeName: cpu_temperature
+    nodePath: /sys/class/thermal/thermal_zone24/temp
+    defValue: ~
+    passValue: ~
+
+  # 高低温保护测试属性
+  - nodeName: charger_aging
+    nodePath: persist.charger.aging
+    #属性为以下值时，开机启动后针对高低温保护不做任何操作
+    defValue: 0
+    #属性为以下值时，开机启动后FactoryTest会关闭thermal-engine
+    passValue: [1]
+
+  ###########Camera相关节点###########
+  # Camera芯片信息
+  - nodeName: camera_chip_info
+    nodePath: /proc/camerainfo
+    defValue: ~
+    passValue: ~
+
+  # 闪光灯切换测试属性（后闪光灯）
+  - nodeName: fl_switch0
+    nodePath: sys.sysctl.led.switch0
+    #属性为以下值时，所有后闪光灯不可用
+    defValue: 0
+    #属性为以下值时，所有后闪光灯可点亮
+    passValue: [1]
+
+  # 闪光灯切换测试属性（前闪光灯）
+  - nodeName: fl_switch1
+    nodePath: sys.sysctl.led.switch1
+    #属性为以下值时，所有前闪光灯不可用
+    defValue: 0
+    #属性为以下值时，所有前闪光灯可点亮
+    passValue: [1]
+
+  # 闪光灯0测试属性
+  - nodeName: fl_flash0
+    nodePath: sys.sysctl.led.flash0
+    defValue: 0
+    #点亮闪光灯0的亮度值，支持且只支持一个亮度值
+    passValue: [120]
+
+  # 闪光灯1测试属性
+  - nodeName: fl_flash1
+    nodePath: sys.sysctl.led.flash1
+    defValue: 0
+    #点亮闪光灯1的亮度值，支持且只支持一个亮度值
+    passValue: [120]
+
+  # 闪光灯2测试属性
+  - nodeName: fl_flash2
+    nodePath: sys.sysctl.led.flash2
+    defValue: 0
+    #点亮闪光灯2的亮度值，支持且只支持一个亮度值
+    passValue: [120]
+
+  ##############器件信息及系统相关#######################
+  # 器件检测
+  - nodeName: device_detection
+    nodePath: /sys/class/dev_dct/dev_flag/rt_dev_flag
+    defValue: ~
+    #节点值为以下值之一，即判定通过
+    passValue: [P]
+
+  #压感芯片测试0
+  - nodeName: ni_force0
+    nodePath: /sys/ni_force_0
+    defValue: ~
+    passValue: [1]
+
+  #压感芯片测试1
+  - nodeName: ni_force1
+    nodePath: /sys/ni_force_1
+    defValue: ~
+    passValue: [1]
+
+  #马达校准次数分区节点
+  - nodeName: motor_haptic_number
+    nodePath: /mnt/vendor/persist/haptic_number
+    defValue: ~
+    passValue: ~
+
+  #马达校准设置校准次数
+  - nodeName: motor_set_calib
+    nodePath: /sys/kernel/debug/tfa9xxx-34/OTC
+    defValue: 1
+    passValue: ~
+
+  #马达校准清空MTP校准标志位
+  - nodeName: motor_clear_calib
+    nodePath: /sys/kernel/debug/tfa9xxx-34/MTPEX
+    defValue: 0
+    passValue: ~
